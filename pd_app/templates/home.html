@@ -1,14 +1,66 @@
 {% extends 'layout.html' %}
 
 {% block body %}
-<div class="page-content">
-	<div class="jumbotron text-center">
-		<h1>Welcome to the {APP NAME HERE} App</h1>
-			<p class="lead">This application is built on the Python Flask framework.</p>
-			{% if session.logged_in == NULL %}
-				<a href="/register" class="btn btn-primary btn-lg">Register</a>
-				<a href="/login" class="btn btn-success btn-lg">Login</a>
-			{% endif %}
-	</div>
-<div>
+	<div class="container-fluid">
+		<nav>
+			<div class="nav nav-tabs" id="nav-tab" role="tablist">
+				<a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Home</a>
+				<a class="nav-item nav-link" id="nav-about-tab" data-toggle="tab" href="#nav-about" role="tab" aria-controls="nav-about" aria-selected="false">About</a>
+				<a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Contact</a>
+			</div>
+		</nav>
+		<div class="tab-content" id="nav-tabContent">
+			<div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+				<h1>Mathematics Professional Development Depository</h1>
+				<h4>Resources for math instruction and learning</h4>
+				<div class="row">
+					<div class="col-lg-4" >
+						<picture>
+							<div class="container-image">
+								<img src="/static/images/antoine-dautry-_zsL306fDck-unsplash.jpg" height="220" alt="polynomials" class="image"/>
+							</div>
+						</picture>
+					</div>
+					<div class="col-lg-4" >
+						<picture>
+							<div class="container-image">
+								<img src="/static/images/antoine-dautry-05A-kdOH6Hw-unsplash.jpg" height="220" alt="polynomials" class="image"/>
+							</div>
+						</picture>
+					</div>
+					<div class="col-lg-4" >
+						<picture>
+							<div class="container-image">
+								<img src="/static/images/jeshoots-com-5EKw8Z7CgE4-unsplash.jpg" height="220" alt="polynomials" class="image"/>
+							</div>
+						</picture>
+					</div>
+				</div>
+				<hr>
+				<h5>
+					Welcome to the { name of site }
+				</h5>
+				<p>
+						This <b>free</b> website is intended for the use of teachers of mathematics in secondary schools, wherever you might be and regardless of what awarding body you use.
+				</p>
+				<p>
+						The { name of site } contains over 15,000 files to do with Edexcel Mathematics and all the qualifications that we offer, including past papers, mark schemes, examiner reports and grade boundaries.
+				</p>
+				<p>
+						To request an account, click on  <a href="/login">Login/Register</a>.
+				</p>
+			</div>
+			<div class="tab-pane fade" id="nav-about" role="tabpanel" aria-labelledby="nav-about-tab">
+				<p>
+					<h1>This is the about page.</h1>
+				</p>
+			</div>
+			<div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+				<p>
+					<h1>This is the contact page.</h1>
+				</p>
+			</div>
+		</div>
+		
+  	</div>
 {% endblock %}
