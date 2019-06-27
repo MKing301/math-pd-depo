@@ -7,6 +7,10 @@ body {
     padding-top: 70px;
 }
 
+hr {
+  border: 1px solid gray;
+}
+
   .footer {
     position: absolute;
     bottom: 0;
