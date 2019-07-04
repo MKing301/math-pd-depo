@@ -2,7 +2,7 @@ from datetime import datetime
 from flask import render_template, url_for, flash, redirect, request, Blueprint
 from flask_login import login_user, current_user, logout_user, login_required
 from pd_app.models import User
-from pd_app.users.forms import RegistrationForm, ContactForm
+from pd_app.users.forms import RegistrationForm, LoginForm, ContactForm
 
 
 
@@ -15,6 +15,14 @@ def register():
         redirect(url_for('main.home'))
     form = RegistrationForm()
     return render_template('register.html', title='Register', form=form)
+
+
+@users.route("/login", methods=['GET', 'POST'])
+def login():
+    if current_user.is_authenticated:
+        redirect(url_for('main.home'))
+    form = LoginForm()
+    return render_template('login.html', title='Login', form=form)
     
     
 @users.route('/contact', methods=['GET', 'POST'])
