@@ -5,13 +5,18 @@ html {
 
 body {
     padding-top: 70px;
+    padding-bottom:60px;   /* Height of the footer */
 }
 
 hr {
   border: 1px solid gray;
 }
 
-  .footer {
+p {
+  font-size: 1.25vw;
+}
+
+.footer {
     position: absolute;
     bottom: 0;
     width: 100%;
@@ -20,7 +25,7 @@ hr {
     background-color: #f5f5f5;
   }
 
-  #footer-text {
+#footer-text {
       font-weight: bold;
       font-size: 24px;
   }
