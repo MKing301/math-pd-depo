@@ -1,24 +1,30 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-    <div class="collapse navbar-collapse">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsDefault" aria-controls="navbarsDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarsDefault">
         <ul class="navbar-nav mr-auto">
             <li>
-                <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="{{ url_for('main.home') }}">Home <span class="sr-only">(current)</span></a>
             </li>
             <li>
-                <a class="nav-link" href="/contact">Contact <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="{{ url_for('users.contact') }}">Contact <span class="sr-only">(current)</span></a>
             </li>
         </ul>
         <ul class="navbar-nav right">
             {% if current_user.is_authenticated %}
                 <li>
-                    <a class="nav-link" href="/logout">Logout</a>
+                    <a class="nav-link" href="{{ url_for('users.search') }}">Search</a>
+                </li>
+                <li>
+                    <a class="nav-link" href="{{ url_for('users.logout') }}">Logout</a>
                 </li>
             {% else %}
                 <li>
-                    <a class="nav-link" href="/register">Register</a>
+                    <a class="nav-link" href="{{ url_for('users.register') }}">Register</a>
                 </li>
                 <li>
-                    <a class="nav-link" href="/login">Login</a>
+                    <a class="nav-link" href="{{ url_for('users.login') }}">Login</a>
                 </li>
             {% endif %}	
         </ul>
