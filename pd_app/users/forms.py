@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, TextAreaField, SubmitField, BooleanField
-from wtforms.validators import DataRequired, Length, Email, EqualTo
+from wtforms import StringField, PasswordField, TextAreaField, SubmitField, BooleanField, SelectField
+from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
 from pd_app.models import User
 
 
@@ -40,6 +40,14 @@ class LoginForm(FlaskForm):
                              validators=[DataRequired()])
     remember = BooleanField('Remember Me')
     submit = SubmitField('Login')
+
+
+class SearchForm(FlaskForm):
+    level = SelectField('Level', choices=[(1, "--- Select One ---"), (2, "K - 5"), (3, "6 - 12"), (4, "Undergraduate"), (5, "Post-Graduate")], default=1)
+    topic = SelectField('Topic', choices=[(1, "--- Select One ---"), (2, "Algebra"), (3, "Calculus"), (4, "Differential Equations"), (5, "Linear Algebra")], default=1)
+    keyword = StringField('Description / Keyword')
+    submit = SubmitField('Search')
+    clear = SubmitField('Clear')
 
 
 class ContactForm(FlaskForm):
