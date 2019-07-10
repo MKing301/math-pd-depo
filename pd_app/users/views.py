@@ -70,3 +70,10 @@ def contact():
         return redirect(url_for('users.contact'))
     else:
         return render_template('contact.html', title="Contact", form=form)
+
+    
+@users.route('/search', methods=['GET', 'POST'])
+@login_required
+def search():
+    form = SearchForm()
+    return render_template('search.html', title="Search", form=form)
