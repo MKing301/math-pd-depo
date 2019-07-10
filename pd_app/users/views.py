@@ -48,6 +48,13 @@ def login():
             return render_template('login.html', title='Login', form=form)
     
     
+@users.route("/logout")
+def logout():
+    logout_user()
+    flash('Signed out!', 'success')
+    return redirect(url_for('main.home'))
+
+
 @users.route('/contact', methods=['GET', 'POST'])
 def contact():
     form = ContactForm()
