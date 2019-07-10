@@ -52,9 +52,14 @@ def login():
 def contact():
     form = ContactForm()
     if form.validate_on_submit():
-        user = User(request.form['first_name'],
-                    request.form['last_name'], request.form['email'],
-                    request.form['user_request'], datetime.utcnow())
+        user_contact = Contact(first_name=form.first_name.data,
+                               last_name=form.last_name.data,
+                               email=form.email.data,
+                               user_request=form.user_request.data,
+                               created_date=datetime.now(pytz.timezone('US/Eastern')))
+        db.session.add(user_contact)
+        db.session.commit()
+        flash('Your request have been submitted.', 'success')
         return redirect(url_for('users.contact'))
     else:
-        return render_template('contact.html', Title="Contact", form=form)
+        return render_template('contact.html', title="Contact", form=form)
