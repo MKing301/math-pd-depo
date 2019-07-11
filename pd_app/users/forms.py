@@ -42,6 +42,17 @@ class LoginForm(FlaskForm):
     submit = SubmitField('Login')
 
 
+class RequestResetForm(FlaskForm):
+    email = StringField('Email',
+                        validators=[DataRequired(), Email()])
+    submit = SubmitField('Request Password Reset')
+
+    def validate_email(self, email):
+        user = User.query.filter_by(email=email.data).first()
+        if user is None:
+            raise ValidationError('There is no account with that email.  You must register first.')
+
+
 class SearchForm(FlaskForm):
     level = SelectField('Level', choices=[(1, "--- Select One ---"), (2, "K - 5"), (3, "6 - 12"), (4, "Undergraduate"), (5, "Post-Graduate")], default=1)
     topic = SelectField('Topic', choices=[(1, "--- Select One ---"), (2, "Algebra"), (3, "Calculus"), (4, "Differential Equations"), (5, "Linear Algebra")], default=1)
