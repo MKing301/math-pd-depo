@@ -3,7 +3,8 @@ from flask import render_template, url_for, flash, redirect, request, Blueprint
 from flask_login import login_user, current_user, logout_user, login_required
 from pd_app import db, bcrypt
 from pd_app.models import User, Contact
-from pd_app.users.forms import RegistrationForm, LoginForm, SearchForm, ContactForm
+from pd_app.users.forms import RegistrationForm, LoginForm, SearchForm, ContactForm, RequestResetForm, ResetPasswordForm
+from pd_app.users.utils import send_reset_email
 import pytz
 
 
