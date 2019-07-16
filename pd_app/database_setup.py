@@ -27,6 +27,7 @@ class User(Base):
     username = Column(String, nullable=False)
     email = Column(String, nullable=False)
     password = Column(String, nullable=False)
+    user_role = Column(String, nullable=False)
     inserted = Column(DateTime, nullable=False)
 
 

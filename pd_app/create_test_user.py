@@ -25,11 +25,12 @@ session = DBSession()
 bcrypt = Bcrypt()
 
 # Create test user
-Test_User = User(first_name="Test",
-                 last_name="User",
-                 username="Test User",
-                 email="testuser@gmail.com",
+Test_User = User(first_name="first name",
+                 last_name="last name",
+                 username="username",
+                 email="email",
                  password=bcrypt.generate_password_hash("password").decode('utf-8'),
+                 user_role="user role",
                  inserted = datetime.datetime.now(pytz.timezone('US/Eastern')))
 session.add(Test_User)
 session.commit()

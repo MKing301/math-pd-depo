@@ -24,6 +24,7 @@ def register():
                              username=form.username.data,
                              email=form.email.data,
                              password=hashed_password,
+                             user_role='member',
                              inserted=datetime.now(pytz.timezone('US/Eastern')))
         db.session.add(user_register)
         db.session.commit()
