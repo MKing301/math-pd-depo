@@ -16,6 +16,7 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(30), unique=True, nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(254), nullable=False)
+    user_role = db.Column(db.String(50), nullable=False)
     inserted = db.Column(db.DateTime, nullable=False)
 
     def get_reset_token(self, expires_sec=1800):
