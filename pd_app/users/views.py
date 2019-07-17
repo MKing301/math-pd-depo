@@ -41,10 +41,16 @@ def login():
     if form.validate_on_submit():
         user_login = User.query.filter_by(email=form.email.data).first()
         if user_login and bcrypt.check_password_hash(user_login.password, form.password.data):
-            login_user(user_login, remember=form.remember.data)
-            next_page = request.args.get('next')
-            flash('Signed in!', 'success')
-            return redirect(next_page) if next_page else redirect(url_for('users.search'))
+            if user_login.user_role == 'member':
+                login_user(user_login, remember=form.remember.data)
+                next_page = request.args.get('next')
+                flash('Signed in!', 'success')
+                return redirect(next_page) if next_page else redirect(url_for('users.search'))
+            elif user_login.user_role == 'admin':
+                login_user(user_login, remember=form.remember.data)
+                next_page = request.args.get('next')
+                flash('Signed in as Admin!', 'success')
+                return redirect(next_page) if next_page else redirect(url_for('users.dashboard'))
         else:
             flash('Login Unsuccessful. Please check email and password', 'danger')
     return render_template('login.html', title='Login', form=form)
@@ -110,3 +116,9 @@ def contact():
 def search():
     form = SearchForm()
     return render_template('search.html', title="Search", form=form)
+
+
+@users.route('/dashboard', methods=['GET', 'POST'])
+@login_required
+def dashboard():
+    return render_template('dashboard.html', title="Dashboard")
