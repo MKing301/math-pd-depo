@@ -17,6 +17,7 @@ class User(Base):
        username = user's username
        email - user's email address
        password - user's password
+       user_role = user's role
        inserted - user inserted date
     '''
     __tablename__ = 'user'
