@@ -50,7 +50,7 @@ def login():
                 login_user(user_login, remember=form.remember.data)
                 next_page = request.args.get('next')
                 flash('Signed in as Admin!', 'success')
-                return redirect(next_page) if next_page else redirect(url_for('users.dashboard'))
+                return redirect(next_page) if next_page else redirect(url_for('users.search'))
         else:
             flash('Login Unsuccessful. Please check email and password', 'danger')
     return render_template('login.html', title='Login', form=form)
@@ -118,7 +118,17 @@ def search():
     return render_template('search.html', title="Search", form=form)
 
 
-@users.route('/dashboard', methods=['GET', 'POST'])
+@users.route('/modify', methods=['GET', 'POST'])
 @login_required
-def dashboard():
-    return render_template('dashboard.html', title="Dashboard")
+def modify():
+    return render_template('modify.html', title="Add/Update/Delete")
+
+@users.route('/member', methods=['GET', 'POST'])
+@login_required
+def member():
+    return render_template('member.html', title="Member")
+
+@users.route('/feedback', methods=['GET', 'POST'])
+@login_required
+def feedback():
+    return render_template('feedback.html', title="Feedback")    
