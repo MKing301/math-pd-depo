@@ -126,7 +126,12 @@ def modify():
 @users.route('/member', methods=['GET', 'POST'])
 @login_required
 def member():
-    return render_template('member.html', title="Member")
+    members = db.session.query(User).all()
+    if members:
+        return render_template('member.html', title="Member", members=members)
+    else:
+        msg = 'No Members Found!'
+        return render_template('member.html', title="Member", msg=msg)
 
 @users.route('/feedback', methods=['GET', 'POST'])
 @login_required
