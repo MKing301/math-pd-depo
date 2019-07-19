@@ -3,4 +3,26 @@
     <div class="content-section">
         <legend class="border-bottom mb-4">Members</legend>
     </div>
+    <div>
+        <table class="table table-striped">
+                <tr>
+                    <th class="fit">First Name</th>
+                    <th class="fit">Last Name</th>
+                    <th class="fit">Username</th>
+                    <th class="fit">Email</th>
+                    <th class="fit">Role</th>
+                    <th class="fit">Inserted Date</th>
+                </tr>
+                {% for member in members %}
+                    <tr>
+                        <td class="fit">{{member.first_name}}</td>
+                        <td class="fit">{{member.last_name}}</td>
+                        <td class="fit">{{member.username}}</td>
+                        <td class="fit">{{member.email}}</td>
+                        <td class="fit">{{member.user_role}}</td>
+                        <td class="fit">{{member.inserted}}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+    </div>
 {% endblock%}
