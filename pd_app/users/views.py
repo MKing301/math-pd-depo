@@ -136,4 +136,10 @@ def member():
 @users.route('/feedback', methods=['GET', 'POST'])
 @login_required
 def feedback():
+    comments = db.session.query(Contact).all()
+    if comments:
+        return render_template('feedback.html', title="Feedback", comments=comments)
+    else:
+        msg = 'No Members Found!'
+        return render_template('feedback.html', title="Feedback", msg=msg)
     return render_template('feedback.html', title="Feedback")    
