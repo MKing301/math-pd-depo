@@ -15,8 +15,8 @@
                 </tr>
                 {% for comment in comments %}
                     <tr>
-                        <td class="fit">{{ comment.created_date }}</td>
-                        <td class="fit">{{ comment.first }}</td>
+                        <td class="fit">{{ comment.created_date.strftime('%m-%d-%Y %I:%M:%S %p') }}</td>
+                        <td class="fit">{{ comment.first_name }}</td>
                         <td class="fit">{{ comment.last_name }}</td>
                         <td class="fit">{{ comment.email }}</td>
                         <td class="fit">{{ comment.user_request }}</td>
