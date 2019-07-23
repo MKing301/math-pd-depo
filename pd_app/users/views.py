@@ -1,4 +1,5 @@
 from datetime import datetime
+from sqlalchemy import desc
 from flask import render_template, url_for, flash, redirect, request, Blueprint
 from flask_login import login_user, current_user, logout_user, login_required
 from pd_app import db, bcrypt
@@ -126,7 +127,7 @@ def modify():
 @users.route('/member', methods=['GET', 'POST'])
 @login_required
 def member():
-    members = db.session.query(User).all()
+    members = db.session.query(User).order_by(desc(User.inserted)).all()
     if members:
         return render_template('member.html', title="Member", members=members)
     else:
@@ -136,7 +137,7 @@ def member():
 @users.route('/feedback', methods=['GET', 'POST'])
 @login_required
 def feedback():
-    comments = db.session.query(Contact).all()
+    comments = db.session.query(Contact).order_by(desc(Contact.created_date)).all()
     if comments:
         return render_template('feedback.html', title="Feedback", comments=comments)
     else:
