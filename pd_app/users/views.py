@@ -122,17 +122,17 @@ def search():
 @users.route('/modify', methods=['GET', 'POST'])
 @login_required
 def modify():
-    return render_template('modify.html', title="Add/Update/Delete")
+    return render_template('modify.html', title="Resources")
 
 @users.route('/member', methods=['GET', 'POST'])
 @login_required
 def member():
     members = db.session.query(User).order_by(desc(User.inserted)).all()
     if members:
-        return render_template('member.html', title="Member", members=members)
+        return render_template('member.html', title="Members", members=members)
     else:
         msg = 'No Members Found!'
-        return render_template('member.html', title="Member", msg=msg)
+        return render_template('member.html', title="Members", msg=msg)
 
 @users.route('/feedback', methods=['GET', 'POST'])
 @login_required
