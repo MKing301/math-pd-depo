@@ -65,11 +65,14 @@ class ResetPasswordForm(FlaskForm):
 
 
 class SearchForm(FlaskForm):
-    level = SelectField('Level', choices=[(1, "--- Select One ---"), (2, "K - 5"), (3, "6 - 12"), (4, "Undergraduate"), (5, "Post-Graduate")], default=1)
-    topic = SelectField('Topic', choices=[(1, "--- Select One ---"), (2, "Algebra"), (3, "Calculus"), (4, "Differential Equations"), (5, "Linear Algebra")], default=1)
-    keyword = StringField('Description / Keyword')
+    my_grade = SelectField('Grade', choices=[("K - 5", "K - 5"),
+                                       ("6 - 8", "6 - 18"),
+                                       ("High School", "High School"),
+                                       ("Undergraduate", "Undergraduate"),
+                                       ("Post-Graduate", "Post-Graduate")])
+    my_course = SelectField('Topic', choices=[])
+    keyword = StringField('Keyword')
     submit = SubmitField('Search')
-    clear = SubmitField('Clear')
 
 
 class ContactForm(FlaskForm):

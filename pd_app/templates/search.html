@@ -7,29 +7,29 @@
                 <legend class="border-bottom mb-4">Search</legend>
                 <div class="row">
                     <div class="col-sm-4">
-                        {{ form.level.label(class="form-control-label") }}
-                        {% if form.level.errors %}
-                            {{ form.level(class="form-control form-control-lg is-invalid") }}
+                        {{ form.my_grade.label(class="form-control-label") }}
+                        {% if form.my_grade.errors %}
+                            {{ form.my_grade(class="form-control form-control-lg is-invalid") }}
                             <div class="invalid-feedback">
-                                {% for error in form.level.errors %}
+                                {% for error in form.my_grade.errors %}
                                     <span>{{ error }}</span>
                                 {% endfor %}
                             </div>
                         {% else %}
-                            {{ form.level(class="form-control form-control-lg") }}
+                            {{ form.my_grade(class="form-control form-control-lg") }}
                         {% endif %}
                     </div>
                     <div class="col-sm-4">
-                        {{ form.topic.label(class="form-control-label") }}
-                        {% if form.topic.errors %}
-                            {{ form.topic(class="form-control form-control-lg is-invalid") }}
+                        {{ form.my_course.label(class="form-control-label") }}
+                        {% if form.my_course.errors %}
+                            {{ form.my_course(class="form-control form-control-lg is-invalid") }}
                             <div class="invalid-feedback">
-                                {% for error in form.topic.errors %}
+                                {% for error in form.my_course.errors %}
                                     <span>{{ error }}</span>
                                 {% endfor %}
                             </div>
                         {% else %}
-                            {{ form.topic(class="form-control form-control-lg") }}
+                            {{ form.my_course(class="form-control form-control-lg") }}
                         {% endif %}
                     </div>
                     <div class="col-sm-4">
@@ -49,10 +49,7 @@
             </fieldset>
             <div class="row">
                 <div class="col-sm-1">
-                    {{ form.submit(class="btn btn-outline-info") }}
-                </div>
-                <div class="col-sm-1">
-                    {{ form.clear(class="btn btn-outline-info", type="reset") }}
+                    {{ form.submit(class="btn btn-outline-info btn-search") }}
                 </div>
             </div>
         </form>
