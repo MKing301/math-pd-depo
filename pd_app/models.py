@@ -41,3 +41,12 @@ class Contact(db.Model):
     email = db.Column(db.String(120), unique=True, nullable=False)
     user_request = db.Column(db.Text, nullable=False)
     created_date = db.Column(db.DateTime, nullable=False)
+
+
+class Resource(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String, nullable=False)
+    grade = db.Column(db.String, nullable=False)
+    course = db.Column(db.String, nullable=False)
+    location = db.Column(db.Text, nullable=False)
+    description = db.Column(db.Text, nullable=False)
