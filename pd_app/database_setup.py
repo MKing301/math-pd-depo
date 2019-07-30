@@ -53,6 +53,18 @@ class Contact(Base):
     created_date = Column(DateTime, nullable=False)
 
 
+class Resource(Base):
+
+    __tablename__ = 'resource'
+
+    id = Column(Integer, primary_key=True)
+    title = Column(String, nullable=False)
+    grade = Column(String, nullable=False)
+    course = Column(String, nullable=False)
+    location = Column(Text, nullable=False)
+    description = Column(Text, nullable=False)
+
+
 engine = create_engine(os.environ.get('LOCAL_DB_URI_MATH'))
 
 Base.metadata.create_all(engine)
