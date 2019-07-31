@@ -66,7 +66,7 @@ class ResetPasswordForm(FlaskForm):
 
 class SearchForm(FlaskForm):
     my_grade = SelectField('Grade', choices=[("K - 5", "K - 5"),
-                                       ("6 - 8", "6 - 18"),
+                                       ("6 - 8", "6 - 8"),
                                        ("High School", "High School"),
                                        ("Undergraduate", "Undergraduate"),
                                        ("Post-Graduate", "Post-Graduate")])
