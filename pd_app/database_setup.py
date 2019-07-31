@@ -65,6 +65,15 @@ class Resource(Base):
     description = Column(Text, nullable=False)
 
 
+class Course(Base):
+
+    __tablename__ = 'course'
+
+    id = Column(Integer, primary_key=True)
+    grade = Column(String, nullable=False)
+    course = Column(String, nullable=False)
+
+
 engine = create_engine(os.environ.get('LOCAL_DB_URI_MATH'))
 
 Base.metadata.create_all(engine)
