@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% block body %}
+    <div class="content-section">
+        <legend class="border-bottom mb-4">Resource List</legend>
+        <a href="#" class="btn btn-primary btn-sm">Add Resource</a>
+        <hr>
+    </div>
+    <div>
+        <table class="table table-striped table-sm">
+            <tr>
+                <th class="fit">ID</th>
+                <th class="fit">Title</th>
+                <th class="fit">Grade</th>
+                <th class="fit">Course</th>
+                <th class="fit">Description</th>
+            </tr>
+            {% for resource in resources %}
+                <tr>
+                    <td class="fit">{{ resource.resource_id }}</td>
+                    <td class="fit"><a href="{{ resource.location }}" target="_blank">{{ resource.title }}</a></td>
+                    <td class="fit">{{ resource.grade }}</td>
+                    <td class="fit">{{ resource.course }}</td>
+                    <td class="fit">{{ resource.description }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock%}
