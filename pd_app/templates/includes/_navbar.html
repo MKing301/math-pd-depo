@@ -12,19 +12,19 @@
             </li>
         </ul>
         <ul class="navbar-nav right">
-            {% if current_user.is_authenticated and current_user.user_role == 'member' %}
+            {% if session.logged_in and session.role == 'member' %}
                 <li>
                     <a class="nav-link" href="{{ url_for('users.search') }}">Search</a>
                 </li>
                 <li>
                     <a class="nav-link" href="{{ url_for('users.logout') }}">Logout</a>
                 </li>
-            {% elif current_user.is_authenticated and current_user.user_role == 'admin' %}
+            {% elif session.logged_in and session.role == 'admin' %}
                 <li>
                     <a class="nav-link" href="{{ url_for('users.search') }}">Search</a>
                 </li>
                 <li>
-                        <a class="nav-link" href="{{ url_for('users.modify') }}">Resources</a>
+                        <a class="nav-link" href="{{ url_for('users.resource') }}">Resources</a>
                     </li>
                 <li>
                     <a class="nav-link" href="{{ url_for('users.member') }}">Member</a>

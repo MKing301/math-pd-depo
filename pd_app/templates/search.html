@@ -4,7 +4,7 @@
         <form method="POST" action="">
             {{ form.csrf_token }}
             <fieldset class="form-group">
-                <legend class="border-bottom mb-4">Search</legend>
+                <legend class="border-bottom mb-4">Search<small> - [ Welcome {{ session.username }} ]</small></legend>
                 <div class="row">
                     <div class="col-sm-4">
                         {{ form.my_grade.label(class="form-control-label") }}
@@ -53,6 +53,24 @@
                 </div>
             </div>
         </form>
-        <hr>
+        <script>
+            let grade_select = document.getElementById('my_grade');
+            let course_select = document.getElementById('my_course');
+
+            grade_select.onchange = function() {
+                my_grade = grade_select.value;
+
+                fetch('/courses/'+ my_grade).then(function(response){
+                    response.json().then(function(data) {
+                        console.table(data); //test line to see data in web console
+                        let optionHTML = '';
+                        for (let my_course of data.course_list) {
+                            optionHTML += '<option value="' + my_course.course_id + '">' + my_course.name + '</option>';
+                        }
+                        course_select.innerHTML = optionHTML;
+                        });
+                });
+            }
+        </script>
     </div>
 {% endblock%}
