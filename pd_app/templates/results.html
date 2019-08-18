@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% block body %}
+    <div>
+        <h4>Results</h4>
+        <table class="table table-responsive table-striped table-sm">
+            <thead>
+                <tr>
+                    <th class="fit">Course ID</th>
+                    <th class="fit">Title</th>
+                    <th class="fit">Grade</th>
+                    <th class="fit">Course</th>
+                    <th class="fit">Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for search_result in search_results %}
+                    <tr>
+                        <td class="fit">{{ search_result.resource_id }}</td>
+                        <td class="fit"><a href="{{ search_result.location }}" target="_blank">{{ search_result.title }}</a></td>
+                        <td class="fit">{{ search_result.grade }}</td>
+                        <td class="fit">{{ search_result.course }}</td>
+                        <td class="fit">{{ search_result.description }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock%}
